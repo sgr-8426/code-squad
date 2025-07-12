@@ -24,6 +24,12 @@ const LoginPage = ({ onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
   const handleBackToHome = () => {
     navigate("/");
   };
@@ -42,10 +48,28 @@ const LoginPage = ({ onNavigate }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const newErrors = {};
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Invalid email format";
+    }
+
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    }
+
+    setErrors(newErrors);
+    setTouched({ email: true, password: true });
+
+    if (Object.keys(newErrors).length > 0) return;
+
     console.log("Login form submitted:", formData);
-    // Handle login logic here
     alert("Welcome back to SkillSwap!");
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -69,7 +93,7 @@ const LoginPage = ({ onNavigate }) => {
             <div className="flex items-center space-x-4">
               <span className="text-gray-600">Don't have an account?</span>
               <button
-                onClick={() => handleGoToSignup}
+                onClick={handleGoToSignup}
                 className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
               >
                 Sign Up
@@ -99,9 +123,17 @@ const LoginPage = ({ onNavigate }) => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onBlur={() => setTouched((prev) => ({ ...prev, email: true }))}
+                className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  touched.email && errors.email
+                    ? "border-red-500"
+                    : "border-gray-300"
+                }`}
                 required
               />
+              {touched.email && errors.email && (
+                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+              )}
             </div>
 
             <div>
@@ -114,9 +146,20 @@ const LoginPage = ({ onNavigate }) => {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
+                  onBlur={() =>
+                    setTouched((prev) => ({ ...prev, password: true }))
+                  }
+                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10 ${
+                    touched.password && errors.password
+                      ? "border-red-500"
+                      : "border-gray-300"
+                  }`}
                   required
                 />
+                {touched.password && errors.password && (
+                  <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+                )}
+
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
@@ -152,6 +195,7 @@ const LoginPage = ({ onNavigate }) => {
             <button
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              onClick={handleGoToSignup}
             >
               Sign In
             </button>

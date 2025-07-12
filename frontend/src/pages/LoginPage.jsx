@@ -68,6 +68,10 @@ const LoginPage = ({ onNavigate }) => {
 
     console.log("Login form submitted:", formData);
     alert("Welcome back to SkillSwap!");
+    // Simulate successful login
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 1000);
   };
 
 
@@ -195,7 +199,7 @@ const LoginPage = ({ onNavigate }) => {
             <button
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-              onClick={handleGoToSignup}
+              onClick={handleGoToDashboard}
             >
               Sign In
             </button>
@@ -205,7 +209,7 @@ const LoginPage = ({ onNavigate }) => {
             <p className="text-gray-600">
               Don't have an account?{" "}
               <button
-                onClick={handleGoToSignup}
+                onClick={handleSubmit}
                 className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
               >
                 Sign up here

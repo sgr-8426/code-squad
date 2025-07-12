@@ -214,9 +214,14 @@ const SignupPage = ({ onNavigate }) => {
         password: "",
         confirmPassword: "",
         agreeTerms: false,
+        isAdmin: false,
+        adminKey: "",
       });
       setErrors({});
       setTouched({});
+
+      // ✅ Redirect to login page after successful signup
+      navigate("/login");
     } catch (error) {
       console.error("Signup error:", error);
       alert("An error occurred during signup. Please try again.");
@@ -224,6 +229,7 @@ const SignupPage = ({ onNavigate }) => {
       setIsSubmitting(false);
     }
   };
+
 
   const getFieldStatus = (fieldName) => {
     if (!touched[fieldName]) return null;
@@ -282,8 +288,7 @@ const SignupPage = ({ onNavigate }) => {
                 Already have an account?
               </span>
               <button
-                // onClick={handleGoToLogin && console.log("Navigating to login")}
-                onClick={console.log("Navigating to login")}
+                onClick={handleGoToLogin}
                 className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
               >
                 Sign In
@@ -609,6 +614,7 @@ const SignupPage = ({ onNavigate }) => {
             <button
               type="submit"
               disabled={isSubmitting}
+              onClick={handleSubmit}
               className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 text-white py-3 px-4 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center"
             >
               {isSubmitting ? (

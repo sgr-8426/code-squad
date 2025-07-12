@@ -332,19 +332,6 @@ const getDashboardStats = async (req, res) => {
     }
 };
 
-export {
-    getFlaggedSkills,
-    updateFlaggedSkill,
-    toggleUserBan,
-    generateActivityReport,
-    generateFeedbackReport,
-    generateSwapReport,
-    sendBroadcastMessage,
-    getBroadcastMessages,
-    getDashboardStats
-}; import User from '../models/user.model.js';
-import Profile from '../models/profile.model.js';
-
 const getAllUsers = async (req, res) => {
   try {
     // Extract query parameters for pagination and filtering
@@ -587,4 +574,15 @@ const banProfile = async (req, res) => {
   }
 };
 
-export { getAllUsers, banUser, banProfile };
+export {
+    getFlaggedSkills,
+    updateFlaggedSkill,
+    toggleUserBan,
+    generateActivityReport,
+    generateFeedbackReport,
+    generateSwapReport,
+    sendBroadcastMessage,
+    getBroadcastMessages,
+    getDashboardStats,getAllUsers,
+    banUser,banProfile
+};

@@ -18,8 +18,6 @@ import {
     getBroadcastMessages,
     getDashboardStats
 } from "../controller/admin.controller.js";
-import { verifyJWT } from "../middlewares/auth.middleware.js";
-import { verifyAdmin } from "../middlewares/admin.middleware.js";
 
 const router = express.Router();
 

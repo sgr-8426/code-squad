@@ -3,7 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from 'dotenv';
 
-dotenv.config({ path: "./.env" })
+dotenv.config({ path: "../.env" })
 
 //Cors defines for cross-origin resource sharing which allows the server to accept requests from different origins.
 const app = express();
@@ -22,10 +22,10 @@ app.use(express.static("public")); // Serve static files from the "public" direc
 app.use(cookieParser());
 
 // Import routes
-
+import userRouter from "./routes/user.route.js";
 
 //Routes declaration
-
+app.use("/api/v1/user", userRouter);
 
 //default api endpoint "http://localhost:5000/api/v1/"
 export default app;

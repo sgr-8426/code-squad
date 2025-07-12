@@ -24,10 +24,12 @@ app.use(cookieParser());
 // Import routes
 import userRouter from "./routes/user.route.js";
 import swapRouter from "./routes/swap.route.js";
+import adminRouter from "./routes/admin.route.js";
 
 //Routes declaration
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/swaps", swapRouter);
+app.use("/api/v1/admin", adminRouter);
 
 //default api endpoint "http://localhost:5000/api/v1/"
 export default app;

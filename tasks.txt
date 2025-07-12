@@ -1,0 +1,251 @@
+Absolutely! Here's a detailed to-do list for the frontend developer and UI/UX designer for the Skill Swap Platform, covering everything from responsive UI to dynamic interactions. It's optimized to help your team build a complete MVP quickly and impress the judges based on the evaluation criteria.
+
+---
+
+## ✅ To-Do List: Frontend & UI/UX (Skill Swap Platform)
+
+---
+
+### 🟩 1. Landing Page (Public)
+
+🎯 Purpose: First impression, explain platform, encourage sign-up
+
+#### 🖌 UI/UX Tasks:
+
+ Eye-catching hero section: What is Skill Swap?
+ Clear call-to-action (CTA) buttons:
+
+   “Join Now” → Signup
+   “Browse Skills” → Public profiles
+ Simple explanation of how it works
+ Mobile-friendly layout
+
+#### 💻 Frontend Tasks:
+
+ Setup responsive layout using TailwindCSS or similar
+ Add conditional rendering for “Login” or “Go to Dashboard”
+ Implement routing using React Router or Next.js
+
+---
+
+🟩 2 Login & Signup Page (Updated)
+🎯 Purpose: Handle both regular and admin users with secure access.
+
+🖌 UI/UX Tasks (Edited):
+Add a checkbox: Register/Login as Admin
+
+When checked:
+
+Show an additional input field: Admin Secret Key
+
+Place the field near the bottom of the form
+
+Show a tooltip or info icon explaining where to get the key
+
+Make sure this works responsively and cleanly hides/shows field
+
+💻 Frontend Tasks (Edited):
+Add state logic:
+
+isAdminChecked to toggle secret key field visibility
+
+Modify form submission:
+
+If isAdminChecked is true, include secretKey in the request payload
+
+Example payload:
+
+json
+Copy
+Edit
+{
+  "email": "...",
+  "password": "...",
+  "isAdmin": true,
+  "secretKey": "..."
+}
+Validate that the secretKey field is not empty if admin checkbox is checked
+
+Handle server error if secret key is invalid (show appropriate error toast)
+
+
+
+### 🟩 3. User Dashboard (Private)
+
+🎯 Purpose: Show user info and manage profile
+
+#### 🖌 UI/UX Tasks:
+
+ Layout with tabs or sections:
+
+   Basic Info (Name, Location, Profile Photo)
+   Skills Offered (Add/Edit/Delete)
+   Skills Wanted (Add/Edit/Delete)
+   Availability (Weekdays, Evenings, etc.)
+   Privacy toggle (Public/Private)
+
+#### 💻 Frontend Tasks:
+
+ Create a user dashboard page with sidebar or navbar layout
+ Add forms for updating skills & availability
+ Add a toggle for public/private profile
+ Fetch and display user data from backend
+
+---
+
+### 🟩 4. Browse/Search Profiles Page
+
+🎯 Purpose: Let users find others by skills
+
+#### 🖌 UI/UX Tasks:
+
+ Design skill filter sidebar or dropdown
+ Create card layout for user profiles:
+
+   Name, Skills Offered, Availability, “Request Swap” button
+
+#### 💻 Frontend Tasks:
+
+ Fetch all public profiles
+ Implement search and filter logic (by skill name, availability)
+ Paginate or infinite scroll the results
+ Link profile cards to detailed user view
+
+---
+
+### 🟩 5. User Profile (Public View)
+
+🎯 Purpose: Show skills of other users
+
+#### 🖌 UI/UX Tasks:
+
+ Display:
+
+   Name, Skills Offered, Skills Wanted
+   Availability
+   Profile Photo
+   Button: “Request Skill Swap”
+
+#### 💻 Frontend Tasks:
+
+ Fetch user data dynamically
+ Implement “Request Swap” button → leads to request form
+ Handle private profiles with a message: “This profile is private.”
+
+---
+
+### 🟩 6. Swap Request System
+
+🎯 Purpose: Let users send, view, accept/reject swap requests
+
+#### 🖌 UI/UX Tasks:
+
+ Design:
+
+   Swap request modal/form
+   Section for “Pending Requests”, “Accepted Swaps”
+   Action buttons: Accept, Reject, Delete
+
+#### 💻 Frontend Tasks:
+
+ Create request form (choose offered skill & wanted skill)
+ Show incoming/outgoing requests with status
+ Handle request actions:
+
+   Accept → moves to accepted list
+   Reject/Delete → remove from pending
+
+---
+
+### 🟩 7. Feedback & Rating
+
+🎯 Purpose: Let users leave feedback after a swap
+
+#### 🖌 UI/UX Tasks:
+
+ Create simple rating form: 1–5 stars + comment box
+ Show ratings on public profiles (optional)
+
+#### 💻 Frontend Tasks:
+
+ Add post-swap feedback form
+ Store ratings in backend
+ Display average rating on user cards or profiles
+
+---
+
+### 🟩 8. Admin Panel
+
+🎯 Purpose: Manage user behavior, content, and system updates
+
+#### 🖌 UI/UX Tasks:
+
+ Tabs/Sections:
+
+   User Management (Ban/Unban)
+   Skill Review (Approve/Reject Descriptions)
+   Monitor Swaps (Pending/Cancelled/Accepted)
+   Broadcast Message
+   Download Reports (CSV buttons)
+
+#### 💻 Frontend Tasks:
+
+ Create route /admin with protected access
+ Table views with action buttons for:
+
+   Banning users
+   Reviewing reported/inappropriate skills
+ Form for sending global messages
+ Integrate download report button (CSV export)
+
+---
+
+### 🟩 9. Navigation & Footer
+
+🎯 Purpose: Unified layout across pages
+
+#### 🖌 UI/UX Tasks:
+
+ Navbar:
+
+   Logo, Home, Browse Skills, Dashboard, Logout/Login
+ Footer:
+
+   About, Contact, Terms
+
+#### 💻 Frontend Tasks:
+
+ Create reusable components: <Navbar />, <Footer />
+ Use responsive hamburger menu on mobile
+ Highlight current page using routing
+
+---
+
+### 🟩 10. Mobile Responsiveness (Global)
+
+Ensure:
+
+ All cards, buttons, and forms resize properly
+ Fonts are readable on small screens
+ Buttons have proper touch area
+ No horizontal scrolling
+
+---
+
+### 🟩 11. General UI Enhancements
+
+ Use a consistent color scheme (professional but vibrant)
+ Add toast notifications (e.g., “Swap Request Sent”, “Profile Updated”)
+ Add loaders for data fetching
+ Use icons (Lucide, Heroicons) for actions
+ Use smooth transitions for modals or drawers
+
+---
+
+### 🧠 Tech Suggestions:
+
+ React.js + TailwindCSS
+ React Router for routing
+ React Hook Form for forms
+ Axios for API calls
+ Optional: Framer Motion for animations

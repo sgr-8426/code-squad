@@ -69,7 +69,6 @@ Validate that the secretKey field is not empty if admin checkbox is checked
 Handle server error if secret key is invalid (show appropriate error toast)
 
 
-
 ### 🟩 3. User Dashboard (Private)
 
 🎯 Purpose: Show user info and manage profile
@@ -78,7 +77,7 @@ Handle server error if secret key is invalid (show appropriate error toast)
 
  Layout with tabs or sections:
 
-   Basic Info (Name, Location, Profile Photo)
+   Basic Info (Name, Location)
    Skills Offered (Add/Edit/Delete)
    Skills Wanted (Add/Edit/Delete)
    Availability (Weekdays, Evenings, etc.)
@@ -174,6 +173,8 @@ Handle server error if secret key is invalid (show appropriate error toast)
 
 ---
 
+
+
 ### 🟩 8. Admin Panel
 
 🎯 Purpose: Manage user behavior, content, and system updates
@@ -183,6 +184,7 @@ Handle server error if secret key is invalid (show appropriate error toast)
  Tabs/Sections:
 
    User Management (Ban/Unban)
+   form for sending updates platform wide 
    Skill Review (Approve/Reject Descriptions)
    Monitor Swaps (Pending/Cancelled/Accepted)
    Broadcast Message
@@ -232,6 +234,11 @@ Ensure:
 
 ---
 
+### 🟩 plateform update page
+a page where update message sent from admin from the form should be displayed 
+
+
+
 ### 🟩 11. General UI Enhancements
 
  Use a consistent color scheme (professional but vibrant)
@@ -248,4 +255,5 @@ Ensure:
  React Router for routing
  React Hook Form for forms
  Axios for API calls
- Optional: Framer Motion for animations
+ and create page folder, route folder, conntext folder , component folder, and manage pages in these folders
+ dont create  landing page in app.jsx create saperate file for that 

@@ -49,6 +49,15 @@ const registerUser = async (req, res) => {
     }
   }
 
+  //check if the user already exists with the same username
+  const existingUsername = await User.findOne({ username });
+  if (existingUsername) {
+    return res.status(409).json({
+      statusCode: 409,
+      message: "User already exists with this username",
+    });
+  }
+
   // Check if user already exists with the same email
   const existingUser = await User.findOne({ email });
 

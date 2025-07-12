@@ -17,10 +17,9 @@ const userSchema = new mongoose.Schema({
         enum: ["user", "admin"],
         default: "user"
     },
-    password: {
-        type: String,
-        required: true,
-        minlength: 6,
+    isBanned: {
+        type: Boolean,
+        default: false
     },
     refreshToken:{
         type: String      

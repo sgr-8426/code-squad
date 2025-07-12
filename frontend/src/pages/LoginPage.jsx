@@ -71,9 +71,8 @@ const LoginPage = ({ onNavigate }) => {
     // Simulate successful login
     setTimeout(() => {
       navigate("/dashboard");
-    }, 1000);
+    }, );
   };
-
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -199,7 +198,7 @@ const LoginPage = ({ onNavigate }) => {
             <button
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-              onClick={handleGoToDashboard}
+              onClick={handleSubmit}
             >
               Sign In
             </button>
